@@ -105,3 +105,8 @@ Or, whatever you named your training text file when you published it in step 3. 
 That's it!  Then, just let the Google Collab tutorial do all the heavy lifting.  Walk through from top to bottom, executing every code block until it auto-generates content in the "Generate Text" stage.
 
 There are lots of ways to customize and tinker with the algorithm, but this is enough to get you started.
+
+## Notes
+The generated content is a little "Jabberwocky" currently.  This could be due to an insufficient training data size.  I haven't yet pulled in content from The Onion or elsewhere to give it more data to train with.  Also, different articles use different "voices", which makes it harder for a machine-learning amalgamation of every article to be coherent and optimized.  So it could be that filtering the training data may bear fruit.  There are also many ways to modify the machine learning algorithm which could improve results.  
+
+There are also some articles like the following which surely don't help in the "Jabberwocky" department: https://clickhole.com/und-hungry-hogg-have-aten-oll-th-dvds-een-aur-vellage-laster-nighten-kann-you-reminder-us-ov-wart-happen-en-theese-dvds-plase-goodest-educated-sir/. Feel free to manually remove any such content from the training data if you'd like.
