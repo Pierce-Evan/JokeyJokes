@@ -1,0 +1,67 @@
+import scrapy
+
+
+class QuotesSpider(scrapy.Spider):
+    # name = "quotes"
+
+    # def start_requests(self):
+    #     urls = [
+    #         'http://quotes.toscrape.com/page/1/',
+    #         'http://quotes.toscrape.com/page/2/',
+    #     ]
+    #     for url in urls:
+    #         yield scrapy.Request(url=url, callback=self.parse)
+
+    # def parse(self, response):
+    #     page = response.url.split("/")[-2]
+    #     filename = f'quotes-{page}.html'
+    #     with open(filename, 'wb') as f:
+    #         f.write(response.body)
+    #     self.log(f'Saved file {filename}')
+
+    name = "quotes"
+    start_urls = [
+        'http://quotes.toscrape.com/page/1/',
+        'http://quotes.toscrape.com/page/2/',
+    ]
+
+    def parse(self, response):
+        for quote in response.css('div.quote'):
+            yield {
+                'text': quote.css('span.text::text').get(),
+                'author': quote.css('small.author::text').get(),
+                'tags': quote.css('div.tags a.tag::text').getall(),
+            }
+
+        next_page = response.css('li.next a::attr(href)').get()
+        if next_page is not None:
+            next_page = response.urljoin(next_page)
+            yield scrapy.Request(next_page, callback=self.parse)
+
+    # def parse(self, response):
+    #     page = response.url.split("/")[-2]
+    #     filename = f'quotes-{page}.html'
+    #     with open(filename, 'wb') as f:
+    #         f.write(response.body)
+
+# to run, nav terminal to ~/Desktop/Scraper/tutorial/tutorial, and run `scrapy crawl clickhole -o FullArticles.json`
+class ClickholeSpider(scrapy.Spider):
+    name = "clickhole"
+    start_urls = [
+        'https://clickhole.com/',
+    ]
+
+    def parse(self, response):
+
+        yield { 
+            'headline': response.css("h2.post-title a::text").getall(),
+            # 'article': response.css("div.post-content p span::text").getall(),
+            }
+
+        # for article in response.css("h2.post-title a::attr(href)"):
+        #     yield scrapy.Request(article.get(), callback=self.parse)
+
+        next_page = response.css("a.next::attr(href)").get()
+        if next_page is not None:
+            yield scrapy.Request(next_page, callback=self.parse)
+
