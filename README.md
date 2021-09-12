@@ -12,7 +12,7 @@ _______________________
 I used a python tool called "Scrapy" https://scrapy.org/ 
 Should be able to install with `pip install scrapy`, or `python3 -m pip install Scrapy` or similar.  See website or stack overflow for installation help if having issues.
 
-### Long Install:
+### Long Install (not very long):
 
 Navigate terminal to a new directory you want to work in, and run `scrapy startproject tutorial`
 
