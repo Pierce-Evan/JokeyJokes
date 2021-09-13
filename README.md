@@ -1,7 +1,7 @@
 # JokeyJokes
 Using Machine Learning to generate joke concepts
 
-1) Scrape Clickhole (or any website) for content to train Machine Learning algorith on
+1) Scrape Clickhole (or any website) for content to train Machine Learning algorithm on
 2) Clean up text generated from scraping
 3) Publish training data text on a publicly accessible website (such as Github...)
 4) Use existing Google collab to train against the data, and generate new jokes
