@@ -48,7 +48,7 @@ class ClickholeSpider(scrapy.Spider):
 
 To run the scraper, navigate terminal to the directory with the `scrapy.cfg` file in it, and run `scrapy crawl clickhole -o Headlines.json`.  This should generate a huge list of every article headline in the entire Clickhole website, and save it to a file called `Headlines.json` in the same directory as the terminal.
 
-To collect full text for every article as well, un-comment the commented our lines in the `quotes_spider.py` file:
+To collect full text for every article as well, un-comment the commented out lines in the `quotes_spider.py` file:
 ```
 import scrapy
 
